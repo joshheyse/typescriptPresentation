@@ -5,29 +5,47 @@ interface Calculator {
   performOperation(a: number, b: number);
 }
 
+enum AdditionOperators {
+  Add,
+  Subtract
+}
+
+enum ProductOperators {
+  Multiply,
+  Divide
+}
+
 class AdditionCalculator implements Calculator {
-  constructor(public operator: string) {
+
+  operator: string;
+
+  constructor(public operatorType: AdditionOperators) {
+    this.operator = AdditionOperators[operatorType];
   }
 
   performOperation(a: number, b: number) {
-    if(this.operator === 'Add') {
+    if(this.operatorType === AdditionOperators.Add) {
       return a + b;
     }
-    else if(this.operator === 'Subtract') {
+    else if(this.operatorType === AdditionOperators.Subtract) {
       return a - b;
     }
   }
 }
 
 class ProductCalculator implements Calculator {
-  constructor(public operator: string) {
+
+  operator: string;
+
+  constructor(public operatorType: ProductOperators) {
+    this.operator = ProductOperators[operatorType];
   }
 
   performOperation(a: number, b: number) {
-    if(this.operator === 'Multiply') {
+    if(this.operatorType === ProductOperators.Multiply) {
       return a * b;
     }
-    else if(this.operator === 'Divide') {
+    else if(this.operatorType === ProductOperators.Divide) {
       return a / b;
     }
   }
@@ -40,10 +58,10 @@ class Controller {
 
   constructor() {
     this.calculators = [
-      new AdditionCalculator('Add'),
-      new AdditionCalculator('Subtract'),
-      new ProductCalculator('Multiply'),
-      new ProductCalculator('Divide')
+      new AdditionCalculator(AdditionOperators.Add),
+      new AdditionCalculator(AdditionOperators.Subtract),
+      new ProductCalculator(ProductOperators.Multiply),
+      new ProductCalculator(ProductOperators.Divide)
       ];
   }
 
