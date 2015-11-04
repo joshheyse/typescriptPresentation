@@ -51,7 +51,7 @@ class Controller {
     this.result = $('#result');
     this.operations = $('#operations');
     this.calculators.forEach(calculator => {
-      $('<button class="btn btn-default">' + calculator.operator + '</button>')
+      $(`<button class="btn btn-default">${calculator.operator}</button>`)
         .click(() => { this.performOperation(calculator); })
         .appendTo(this.operations);
     });
@@ -62,7 +62,7 @@ class Controller {
     var a = parseInt($('#valueA').val());
     var b = parseInt($('#valueB').val());
     try {
-      this.result.val('The result of ' +  a + ' and ' + b + ' is ' + calculator.performOperation(a, b));
+      this.result.val(`The result of ${a} and ${b} is ${calculator.performOperation(a, b)}`);
     }
     catch(err) {
       this.result.val('There was an error performing the operation');
