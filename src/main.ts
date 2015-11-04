@@ -1,6 +1,11 @@
 /// <reference path="../typings/jquery/jquery.d.ts" />
 
-class AdditionCalculator {
+interface Calculator {
+  operator: string;
+  performOperation(a: number, b: number);
+}
+
+class AdditionCalculator implements Calculator {
   constructor(public operator: string) {
   }
 
@@ -14,7 +19,7 @@ class AdditionCalculator {
   }
 }
 
-class ProductCalculator {
+class ProductCalculator implements Calculator {
   constructor(public operator: string) {
   }
 
@@ -29,7 +34,7 @@ class ProductCalculator {
 }
 
 class Controller {
-  private calculators : any[];
+  private calculators : Calculator[];
   private result: JQuery;
   private operations: JQuery;
 
@@ -53,7 +58,7 @@ class Controller {
     });
   }
 
-  performOperation(calculator) {
+  performOperation(calculator: Calculator) {
     this.result.val('');
     var a = $('#valueA').val();
     var b = $('#valueB').val();
