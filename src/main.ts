@@ -4,7 +4,7 @@ var AdditionCalculator = function(operator) {
     this.operator = operator;
 };
 
-AdditionCalculator.prototype.performOperation = function(a, b) {
+AdditionCalculator.prototype.performOperation = function(a: number, b: number) {
   if(this.operator === 'Add') {
     return a + b;
   }
@@ -18,7 +18,7 @@ var ProductCalculator = function(operator) {
     this.operator = operator;
 };
 
-ProductCalculator.prototype.perfromOperation = function(a, b) {
+ProductCalculator.prototype.perfromOperation = function(a: number, b: number) {
   if(this.operator === 'Multiply') {
     return a * b;
   }
