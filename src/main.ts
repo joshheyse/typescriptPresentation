@@ -23,7 +23,7 @@ class ProductCalculator implements Calculator {
   constructor(public operator: string) {
   }
 
-  perfromOperation(a: number, b: number) {
+  performOperation(a: number, b: number) {
     if(this.operator === 'Multiply') {
       return a * b;
     }
@@ -50,18 +50,17 @@ class Controller {
   attach() {
     this.result = $('#result');
     this.operations = $('#operations');
-    var self = this;
-    this.calculators.forEach(function(calculator) {
+    this.calculators.forEach(calculator => {
       $('<button class="btn btn-default">' + calculator.operator + '</button>')
-        .click(function() { self.performOperation(calculator); })
-        .appendTo(self.operations);
+        .click(() => { this.performOperation(calculator); })
+        .appendTo(this.operations);
     });
   }
 
   performOperation(calculator: Calculator) {
     this.result.val('');
-    var a = $('#valueA').val();
-    var b = $('#valueB').val();
+    var a = parseInt($('#valueA').val());
+    var b = parseInt($('#valueB').val());
     try {
       this.result.val('The result of ' +  a + ' and ' + b + ' is ' + calculator.performOperation(a, b));
     }
