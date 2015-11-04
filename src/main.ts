@@ -1,3 +1,5 @@
+/// <reference path="../typings/jquery/jquery.d.ts" />
+
 var AdditionCalculator = function(operator) {
     this.operator = operator;
 };
