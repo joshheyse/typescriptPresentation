@@ -11,6 +11,7 @@ AdditionCalculator.prototype.performOperation = function(a, b) {
   }
 };
 
+
 var ProductCalculator = function(operator) {
     this.operator = operator;
 };
