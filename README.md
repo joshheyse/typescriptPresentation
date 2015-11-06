@@ -4,5 +4,5 @@ A presentation that walks through converting a simple javascript app to typescri
 To walk through the progression
 
 * clone the master repo
-* execute ./runPresentation master 9
+* execute ./runPresentation master 11
 * Press enter to step through changes
